@@ -1,0 +1,69 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{rotating}
+
+\begin{document}
+\begin{center}
+\Large{\textbf{ECON 634 Problem Set 6}}\\[3mm]
+\large{{Mingyang Li}}\\[1mm]
+\today
+\end{center}
+\vfill
+
+\begin{enumerate}
+\item Below is what I got from running the OLS regression.
+\begin{table}[h!]
+\centering
+ \begin{tabular}{||c c c||} 
+ \hline 
+ Parameter & Estimate & Standard Error \\
+ \hline\hline
+ $\beta_0$ & 4.9133 & 0.063121 \\ 
+ $\beta_{educ}$ & 0.073807 & 0.0035336 \\
+ $\beta_{exp}$ & 0.039313 & 0.0021955 \\
+ $\beta_{SMSA}$ & 0.16474 & 0.015692 \\
+ $\beta_{black}$ & -0.18822 & 0.017768 \\ 
+ $\beta_{south}$ & -0.12905 & 0.015229 \\
+ $\sigma^2_{\epsilon}$ & 0.14229 & 0.0036714 \\
+ \hline
+ \end{tabular}
+ \caption{OLS Estimation Results}
+\end{table}
+\item The vector of interesting parameters is $$\theta = [\beta_0 \quad \beta_{educ} \quad \beta_{exp} \quad \beta_{SMSA} \quad \beta_{black} \quad \beta_{south} \quad \sigma^2_{\epsilon}]\text{.}$$ Applying the Metropolis-Hastings Algorithm, I got the posterior distributions of the parameters of interest. Attached are the plots of the corresponding posterior distribution, where the yellow lines are the OLS estimates from above. We can adjust the scale of the parameter variance to reach a satisfactory acceptance rate within [20\%, 25\%].
+\item The OLS estimation provides the point estimates of parameters while the Bayesian estimation gives the estimated distributions of parameters. The Bayesian posterior distributions are approximately normal with means close to the OLS estimates. However, in this problem, it's hard to tell the difference between the flat prior case and the given prior one by looking at the graphs.
+\begin{sidewaysfigure}
+\centerline{\includegraphics[scale=.38]{beta0.jpg}}
+\caption{Posterior Distribution of $\beta_0$}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+\centerline{\includegraphics[scale=.38]{beta1.jpg}}
+\caption{Posterior Distribution of $\beta_{educ}$}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+\centerline{\includegraphics[scale=.38]{beta2.jpg}}
+\caption{Posterior Distribution of $\beta_{exp}$}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+\centerline{\includegraphics[scale=.38]{beta3.jpg}}
+\caption{Posterior Distribution of $\beta_{SMSA}$}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+\centerline{\includegraphics[scale=.38]{beta4.jpg}}
+\caption{Posterior Distribution of $\beta_{black}$}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+\centerline{\includegraphics[scale=.38]{beta5.jpg}}
+\caption{Posterior Distribution of $\beta_{south}$}
+\end{sidewaysfigure}
+\begin{sidewaysfigure}
+\centerline{\includegraphics[scale=.38]{beta6.jpg}}
+\caption{Posterior Distribution of $\sigma^2_{\epsilon}$}
+\end{sidewaysfigure}
+\end{enumerate}
+
+
+\end{document}

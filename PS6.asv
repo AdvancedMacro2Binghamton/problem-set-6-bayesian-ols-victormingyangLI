@@ -1,5 +1,4 @@
 % Program Name: Bayesian OLS
-% I sincerely appreciate Huayan's generous help.
 clear, clc, close all
 tic
 
@@ -18,7 +17,6 @@ vcv = s2*inv(X'*X); % Variance-covariance matrix of betas
 se = sqrt(diag(vcv)); % Standard errors of betas
 % How to calculate (and why)? Since the residual variance is one parameter of interest.
 var_res = 2/(length_X-width_X)*s2^2; % Variance of residual variance (s2)
-se_res = sqrt(var_res); % Standard error of residual variance (s2)
 
 % 2.(a) Metropolis-Hastings Algorithm with flat priors
 ntrial = 100000; % Number of trials
@@ -54,7 +52,7 @@ for i = 1:(ntrial-1)
 end
 acc_rate = acc/ntrial;
 
-% 2.(b) Metropolis-Hastings Algorithm with given prior of beta_educ
+% 2.(a) Metropolis-Hastings Algorithm with given prior of beta_educ
 % Prior of beta_educ
 mean = 0.06;                            % Mean of prior
 alpha = 0.05;                           % Significance level
@@ -91,7 +89,7 @@ for i = 1:(ntrial-1)
 end
 acc_rate_new = acc_new/ntrial;
 
-% Plot posterior distributons with flat priors and given prior of beta_educ
+% Posterior distributons with flat priors and given prior of beta_educ
 
 figure
 subplot(1,2,1)
@@ -109,12 +107,14 @@ title('Posterior Distribution of \beta_0 with Given Prior of \beta_{educ}')
 figure
 subplot(1,2,1)
 histfit(theta_hat(:,2),250,'kernel')
+h(1).FAceColor = [0 1 0];
 hold on
 line([theta(2) theta(2)],ylim,'Color','y','LineWidth',2)
 title('Posterior Distribution of \beta_{educ} with Flat Priors')
 
 subplot(1,2,2)
 histfit(theta_hat_new(:,2),250,'kernel')
+h(1).Color = [0 1 0];
 hold on
 line([theta(2) theta(2)],ylim,'Color','y','LineWidth',2)
 title('Posterior Distribution of \beta_{educ} with Given Prior of \beta_{educ}')
